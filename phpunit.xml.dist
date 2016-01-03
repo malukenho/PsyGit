@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<phpunit
+        bootstrap="./vendor/autoload.php"
+        colors="true"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        verbose="true"
+        stopOnFailure="false"
+        processIsolation="false"
+        backupGlobals="false"
+        syntaxCheck="true"
+        columns="max"
+>
+    <testsuite name="PsyGit tests">
+        <directory>./tests</directory>
+    </testsuite>
+</phpunit>
