@@ -21,6 +21,7 @@ declare(strict_types=1);
 namespace PsyGit;
 
 use PsyGit\Command as Git;
+use Symfony\Component\Process\Process;
 
 /**
  * @author Jefersson Nathan <malukenho@phpse.net>
@@ -215,7 +216,9 @@ class RepositoryManager
     private function getExecutorHandler() : callable
     {
         return function (string $command) {
-            return exec($command);
+            $process = new Process($command);
+
+            return $process->run();
         };
     }
 }
