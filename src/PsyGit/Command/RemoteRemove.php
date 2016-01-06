@@ -39,13 +39,11 @@ final class RemoteRemove
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory, string $alias)
+    public function __invoke(string $alias)
     {
         $commandHandler = $this->commandHandler;
+        $alias          = escapeshellarg($alias);
 
-        $directory  = escapeshellarg($directory);
-        $alias      = escapeshellarg($alias);
-
-        return $commandHandler("cd $directory && git remote rm $alias");
+        return $commandHandler("git remote rm $alias");
     }
 }

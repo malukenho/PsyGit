@@ -40,13 +40,11 @@ final class Commit
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory, string $message)
+    public function __invoke(string $message)
     {
         $commandHandler = $this->commandHandler;
+        $message        = escapeshellarg(addslashes($message));
 
-        $directory = escapeshellarg($directory);
-        $message   = escapeshellarg(addslashes($message));
-
-        return $commandHandler("cd $directory && git commit -m$message");
+        return $commandHandler("git commit -m$message");
     }
 }

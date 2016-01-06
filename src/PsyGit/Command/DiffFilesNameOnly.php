@@ -39,13 +39,12 @@ final class DiffFilesNameOnly
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory, string $branch)
+    public function __invoke(string $branch)
     {
         $commandHandler = $this->commandHandler;
 
         $branch    = escapeshellarg($branch);
-        $directory = escapeshellarg($directory);
 
-        return $commandHandler("cd $directory && git diff $branch --name-only");
+        return $commandHandler("git diff $branch --name-only");
     }
 }

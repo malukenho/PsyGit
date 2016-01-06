@@ -39,13 +39,11 @@ final class CherryPick
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory, string $commit)
+    public function __invoke(string $commit)
     {
         $commandHandler = $this->commandHandler;
+        $commit         = escapeshellarg($commit);
 
-        $directory  = escapeshellarg($directory);
-        $commit     = escapeshellarg($commit);
-
-        return $commandHandler("cd $directory && git cherry-pick $commit");
+        return $commandHandler("git cherry-pick $commit");
     }
 }

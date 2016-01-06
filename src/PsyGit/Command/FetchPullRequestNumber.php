@@ -43,17 +43,15 @@ final class FetchPullRequestNumber
     }
 
     public function __invoke(
-        string $directory,
         int $pullRequest,
         string $branch,
         string $remote = self::DEFAULT_REMOTE
     ) {
         $commandHandler = $this->commandHandler;
 
-        $directory   = escapeshellarg($directory);
         $branch      = escapeshellarg($branch);
         $remote      = escapeshellarg($remote);
 
-        return $commandHandler("cd $directory && git fetch $remote pull/$pullRequest/head:$branch");
+        return $commandHandler("git fetch $remote pull/$pullRequest/head:$branch");
     }
 }

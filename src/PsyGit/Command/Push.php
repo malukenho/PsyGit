@@ -44,15 +44,14 @@ final class Push
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory, string $remote, string $branch, string $option = self::PUSH_NORMAL)
+    public function __invoke(string $remote, string $branch, string $option = self::PUSH_NORMAL)
     {
         $commandHandler = $this->commandHandler;
 
-        $directory = escapeshellarg($directory);
         $option    = escapeshellarg($option);
         $remote    = escapeshellarg($remote);
         $branch    = escapeshellarg($branch);
 
-        return $commandHandler("cd $directory && git push $option $remote $branch");
+        return $commandHandler("git push $option $remote $branch");
     }
 }

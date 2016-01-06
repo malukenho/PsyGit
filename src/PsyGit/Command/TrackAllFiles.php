@@ -40,12 +40,10 @@ final class TrackAllFiles
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory)
+    public function __invoke()
     {
         $commandHandler = $this->commandHandler;
 
-        $directory = escapeshellarg($directory);
-
-        return $commandHandler("cd $directory && git add .");
+        return $commandHandler("git add .");
     }
 }

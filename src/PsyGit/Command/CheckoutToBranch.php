@@ -40,13 +40,11 @@ final class CheckoutToBranch
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory, string $branch)
+    public function __invoke(string $branch)
     {
         $commandHandler = $this->commandHandler;
+        $branch         = escapeshellarg($branch);
 
-        $directory = escapeshellarg($directory);
-        $branch    = escapeshellarg($branch);
-
-        return $commandHandler("cd $directory && git checkout $branch");
+        return $commandHandler("git checkout $branch");
     }
 }

@@ -43,10 +43,8 @@ final class NewBranchFromBranch
     public function __invoke(string $directory, string $newBranchName)
     {
         $commandHandler = $this->commandHandler;
+        $newBranchName  = escapeshellarg($newBranchName);
 
-        $directory     = escapeshellarg($directory);
-        $newBranchName = escapeshellarg($newBranchName);
-
-        return $commandHandler("cd $directory && git checkout -b $newBranchName");
+        return $commandHandler("git checkout -b $newBranchName");
     }
 }

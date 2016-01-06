@@ -40,12 +40,10 @@ final class InitializeRepository
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory)
+    public function __invoke()
     {
         $commandHandler = $this->commandHandler;
 
-        $directory = escapeshellarg($directory);
-
-        return $commandHandler("cd $directory && git init");
+        return $commandHandler("git init");
     }
 }

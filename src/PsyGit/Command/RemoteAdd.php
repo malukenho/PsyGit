@@ -39,14 +39,13 @@ final class RemoteAdd
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory, string $alias, string $repository)
+    public function __invoke(string $alias, string $repository)
     {
         $commandHandler = $this->commandHandler;
 
-        $directory  = escapeshellarg($directory);
         $alias      = escapeshellarg($alias);
         $repository = escapeshellarg($repository);
 
-        return $commandHandler("cd $directory && git remote add $alias $repository");
+        return $commandHandler("git remote add $alias $repository");
     }
 }
