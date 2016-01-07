@@ -94,7 +94,7 @@ class RepositoryManager
      */
     public function trackFile(string $file) : self
     {
-        (new Git\TrackFile($this->getExecutorHandler()))->__invoke($this->directory, $file);
+        (new Git\TrackFile($this->getExecutorHandler()))->__invoke($file);
 
         return $this;
     }
@@ -104,7 +104,7 @@ class RepositoryManager
      */
     public function trackAllFiles() : self
     {
-        (new Git\TrackAllFiles($this->getExecutorHandler()))->__invoke($this->directory);
+        (new Git\TrackAllFiles($this->getExecutorHandler()))->__invoke();
 
         return $this;
     }
@@ -116,7 +116,7 @@ class RepositoryManager
      */
     public function checkoutToBranch(string $branch) : self
     {
-        (new Git\CheckoutToBranch($this->getExecutorHandler()))->__invoke($this->directory, $branch);
+        (new Git\CheckoutToBranch($this->getExecutorHandler()))->__invoke($branch);
 
         return $this;
     }
@@ -133,7 +133,7 @@ class RepositoryManager
         string $branch,
         $remote = Git\FetchPullRequestNumber::DEFAULT_REMOTE
     ) : self {
-        (new Git\FetchPullRequestNumber($this->getExecutorHandler()))->__invoke($this->directory, $pullRequest, $branch, $remote);
+        (new Git\FetchPullRequestNumber($this->getExecutorHandler()))->__invoke($pullRequest, $branch, $remote);
 
         return $this;
     }
@@ -145,7 +145,7 @@ class RepositoryManager
      */
     public function createNewBranch(string $newBranchName) : self
     {
-        (new Git\NewBranchFromBranch($this->getExecutorHandler()))->__invoke($this->directory, $newBranchName);
+        (new Git\NewBranchFromBranch($this->getExecutorHandler()))->__invoke($newBranchName);
 
         return $this;
     }
@@ -158,7 +158,7 @@ class RepositoryManager
      */
     public function remoteAdd(string $alias, string $remoteUrl) : self
     {
-        (new Git\RemoteAdd($this->getExecutorHandler()))->__invoke($this->directory, $alias, $remoteUrl);
+        (new Git\RemoteAdd($this->getExecutorHandler()))->__invoke($alias, $remoteUrl);
 
         return $this;
     }
@@ -170,7 +170,7 @@ class RepositoryManager
      */
     public function remoteRemove(string $alias) : self
     {
-        (new Git\RemoteRemove($this->getExecutorHandler()))->__invoke($this->directory, $alias);
+        (new Git\RemoteRemove($this->getExecutorHandler()))->__invoke($alias);
 
         return $this;
     }
@@ -182,7 +182,7 @@ class RepositoryManager
      */
     public function cherryPick(string $commit) : self
     {
-        (new Git\CherryPick($this->getExecutorHandler()))->__invoke($this->directory, $commit);
+        (new Git\CherryPick($this->getExecutorHandler()))->__invoke($commit);
 
         return $this;
     }
@@ -194,7 +194,7 @@ class RepositoryManager
      */
     public function commit(string $message) : self
     {
-        (new Git\Commit($this->getExecutorHandler()))->__invoke($this->directory, $message);
+        (new Git\Commit($this->getExecutorHandler()))->__invoke($message);
 
         return $this;
     }
@@ -208,7 +208,7 @@ class RepositoryManager
      */
     public function push(string $remoteAlias, string $branch, $option = Git\Push::PUSH_NORMAL) : self
     {
-        (new Git\Push($this->getExecutorHandler()))->__invoke($this->directory, $remoteAlias, $branch, $option);
+        (new Git\Push($this->getExecutorHandler()))->__invoke($remoteAlias, $branch, $option);
 
         return $this;
     }
@@ -216,7 +216,7 @@ class RepositoryManager
     private function getExecutorHandler() : callable
     {
         return function (string $command) {
-            $process = new Process($command);
+            $process = new Process($command, $this->directory);
 
             return $process->run();
         };
