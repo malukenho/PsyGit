@@ -1,5 +1,5 @@
-PsyGit - Git for PHPsychopaths
-==============================
+PsyGit - Git for PHPsychopaths :construction_worker: [WIP]
+==========================================================
 
 <table border="0">
     <tr>
@@ -20,25 +20,32 @@ PsyGit - Git for PHPsychopaths
 <table>
     <tr>
         <td>
-            <a href="#">Installation</a>
+            <a href="#installation">Installation</a>
         </td>
         <td>
-            <a href="#">Standalone</a>
+            <a href="#standalone">Standalone</a>
         </td>
         <td>
-            <a href="#">CQRS</a>
+            <a href="#cqrs">CQRS</a>
         </td>
         <td>
             <a href="#">Fluent Interface</a>
         </td>
         <td>
-            <a href="#">Commands</a>
+            <a href="#commands">Commands</a>
         </td>
     </tr>
 </table>
 
 
 ### Installation
+
+Composer FTW!
+
+```sh
+$ composer require malukenho/psygit
+```
+
 ### Standalone
 ### CQRS
 ### Fluent Interface
