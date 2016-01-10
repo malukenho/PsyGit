@@ -35,6 +35,8 @@ final class InitializeRepositoryTest extends \PHPUnit_Framework_TestCase
 
         mkdir($directory);
 
+        self::assertFileNotExists($directory . '/.git');
+
         (new InitializeRepository(function ($command) {
             exec($command);
         }))

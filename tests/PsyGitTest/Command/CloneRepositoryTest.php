@@ -35,6 +35,8 @@ final class CloneRepositoryTest extends \PHPUnit_Framework_TestCase
     {
         $destination = sys_get_temp_dir() . '/' . microtime(true);
 
+        self::assertFileNotExists($destination . '/.git');
+
         (new CloneRepository(function ($command) {
                 exec($command);
         }))
