@@ -40,10 +40,19 @@ PsyGit - Git for PHPsychopaths :construction_worker: [WIP]
 
 ### Installation
 
-Composer FTW!
+It's can simply be installed by composer.
 
 ```sh
 $ composer require malukenho/psygit
+```
+
+Now you can use the repository manager and start interact with your Repository.
+
+```php
+(PsyGit\RepositoryManager::fromDirectory('project-repository'))
+    ->trackFile('changelog.txt')
+        ->commit('Changelog updated automaticly 8 A.M.')
+            ->push('origin', 'master', \PsyGit\Command\Push::PUSH_FORCE);
 ```
 
 ### Standalone
