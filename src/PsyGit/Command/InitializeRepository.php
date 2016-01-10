@@ -21,8 +21,7 @@ declare(strict_types=1);
 namespace PsyGit\Command;
 
 /**
- * Command to initialize a git repository on a directory
- * {@link https://git-scm.com/docs/git-init}
+ * Command to initialize a git repository on a directory {@link https://git-scm.com/docs/git-init}
  *
  * @author Jefersson Nathan <malukenho@phpse.net>
  */

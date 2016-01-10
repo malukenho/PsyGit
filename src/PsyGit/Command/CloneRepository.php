@@ -21,8 +21,7 @@ declare(strict_types=1);
 namespace PsyGit\Command;
 
 /**
- * Command to clone a git repository to a directory
- * {@link https://git-scm.com/docs/git-clone}
+ * Command to clone a git repository to a directory {@link https://git-scm.com/docs/git-clone}
  *
  * @author Jefersson Nathan <malukenho@phpse.net>
  */
