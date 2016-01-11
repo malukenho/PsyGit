@@ -21,6 +21,7 @@ declare(strict_types=1);
 namespace PsyGitTest\Command;
 
 use PsyGit\Command\InitializeRepository;
+use Symfony\Component\Process\Process;
 
 /**
  * @author Jefersson Nathan <malukenho@phpse.net>
@@ -37,10 +38,12 @@ final class InitializeRepositoryTest extends \PHPUnit_Framework_TestCase
 
         self::assertFileNotExists($directory . '/.git');
 
-        (new InitializeRepository(function ($command) {
-            exec($command);
+        (new InitializeRepository(function ($command) use ($directory) {
+            $process = new Process($command, $directory);
+
+            return $process->run();
         }))
-            ->__invoke($directory);
+            ->__invoke();
 
         self::assertFileExists($directory . '/.git');
     }
