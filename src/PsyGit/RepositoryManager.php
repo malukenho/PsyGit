@@ -124,6 +124,30 @@ class RepositoryManager
     }
 
     /**
+     * @param string $alias
+     *
+     * @return self
+     */
+    public function remoteRemove(string $alias) : self
+    {
+        (new Git\RemoteRemove($this->getExecutorHandler()))->__invoke($this->directory, $alias);
+
+        return $this;
+    }
+
+    /**
+     * @param string $commit
+     *
+     * @return self
+     */
+    public function cherryPick(string $commit) : self
+    {
+        (new Git\CherryPick($this->getExecutorHandler()))->__invoke($this->directory, $commit);
+
+        return $this;
+    }
+
+    /**
      * @param string $message
      *
      * @return self
