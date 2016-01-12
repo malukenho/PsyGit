@@ -47,6 +47,6 @@ final class Commit
         $directory = escapeshellarg($directory);
         $message   = escapeshellarg(addslashes($message));
 
-        return $commandHandler("cd $directory && git commit -m'$message'");
+        return $commandHandler("cd $directory && git commit -m$message");
     }
 }
