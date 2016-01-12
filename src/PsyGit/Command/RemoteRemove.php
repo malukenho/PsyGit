@@ -39,7 +39,7 @@ final class RemoteRemove
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke($directory, $alias)
+    public function __invoke(string $directory, string $alias)
     {
         $commandHandler = $this->commandHandler;
 

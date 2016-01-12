@@ -44,7 +44,7 @@ final class Push
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke($directory, $remote, $branch, $option = self::PUSH_NORMAL)
+    public function __invoke(string $directory, string $remote, string $branch, string $option = self::PUSH_NORMAL)
     {
         $commandHandler = $this->commandHandler;
 

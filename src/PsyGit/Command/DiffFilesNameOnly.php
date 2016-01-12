@@ -39,7 +39,7 @@ final class DiffFilesNameOnly
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke($directory, $branch)
+    public function __invoke(string $directory, string $branch)
     {
         $commandHandler = $this->commandHandler;
 

@@ -40,12 +40,12 @@ final class TrackFile
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke($directory, $file)
+    public function __invoke(string $directory, string $file)
     {
         $commandHandler = $this->commandHandler;
 
         $directory = escapeshellarg($directory);
-        $file    = escapeshellarg($file);
+        $file      = escapeshellarg($file);
 
         return $commandHandler("cd $directory && git add $file");
     }

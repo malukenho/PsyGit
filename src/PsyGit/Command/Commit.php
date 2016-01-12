@@ -40,7 +40,7 @@ final class Commit
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke($directory, $message)
+    public function __invoke(string $directory, string $message)
     {
         $commandHandler = $this->commandHandler;
 

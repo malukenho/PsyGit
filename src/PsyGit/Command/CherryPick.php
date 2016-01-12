@@ -39,7 +39,7 @@ final class CherryPick
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke($directory, $commit)
+    public function __invoke(string $directory, string $commit)
     {
         $commandHandler = $this->commandHandler;
 

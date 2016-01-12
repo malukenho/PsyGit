@@ -40,7 +40,7 @@ final class InitializeRepository
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke($directory)
+    public function __invoke(string $directory)
     {
         $commandHandler = $this->commandHandler;
 

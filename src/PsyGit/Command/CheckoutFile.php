@@ -15,45 +15,9 @@
  * This software consists of voluntary contributions made by many individuals
  * and is licensed under the MIT license.
  */
-
-declare(strict_types=1);
-
 namespace PsyGit\Command;
 
-/**
- * Fetch a pull request to a new branch {@link https://git-scm.com/docs/git-fetch}
- *
- * @author Jefersson Nathan <malukenho@phpse.net>
- */
-final class FetchPullRequestNumber
+final class CheckoutFile
 {
-    const DEFAULT_REMOTE = 'origin';
 
-    /**
-     * @var callable
-     */
-    private $commandHandler;
-
-    /**
-     * @param callable $commandHandler
-     */
-    public function __construct(callable $commandHandler)
-    {
-        $this->commandHandler = $commandHandler;
-    }
-
-    public function __invoke(
-        string $directory,
-        int $pullRequest,
-        string $branch,
-        string $remote = self::DEFAULT_REMOTE
-    ) {
-        $commandHandler = $this->commandHandler;
-
-        $directory   = escapeshellarg($directory);
-        $branch      = escapeshellarg($branch);
-        $remote      = escapeshellarg($remote);
-
-        return $commandHandler("cd $directory && git fetch $remote pull/$pullRequest/head:$branch");
-    }
 }

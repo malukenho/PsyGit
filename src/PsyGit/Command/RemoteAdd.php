@@ -39,7 +39,7 @@ final class RemoteAdd
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke($directory, $alias, $repository)
+    public function __invoke(string $directory, string $alias, string $repository)
     {
         $commandHandler = $this->commandHandler;
 

@@ -42,7 +42,7 @@ final class CloneRepository
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke($repository, $destination, $branch = self::BRANCH_MASTER)
+    public function __invoke(string $repository, string $destination, string $branch = self::BRANCH_MASTER)
     {
         $commandHandler = $this->commandHandler;
 
