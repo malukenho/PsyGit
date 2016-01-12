@@ -40,11 +40,31 @@ class RepositoryManager
     /**
      * @param $directory
      *
+     * @throws \InvalidArgumentException
+     *
      * @return self
      */
     public static function fromDirectory(string $directory) : self
     {
+        if (! file_exists($directory . '/.git')) {
+            throw new \InvalidArgumentException(sprintf('"%s" is not a valid repository path', $directory));
+        }
+
         return new self($directory);
+    }
+
+    /**
+     * @param string $directory
+     *
+     * @return self
+     */
+    public static function initializeOnDirectory(string $directory) : self
+    {
+        $repository = new self($directory);
+
+        (new Git\InitializeRepository($repository->getExecutorHandler()))->__invoke($directory);
+
+        return $repository;
     }
 
     /**
