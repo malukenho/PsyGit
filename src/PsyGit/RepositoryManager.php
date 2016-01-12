@@ -68,6 +68,25 @@ class RepositoryManager
     }
 
     /**
+     * @param string $repositoryUrl
+     * @param string $destinationPath
+     * @param string $branch
+     *
+     * @return RepositoryManager
+     */
+    public static function cloneToDirectory(
+        string $repositoryUrl,
+        string $destinationPath,
+        string $branch = Git\CloneRepository::BRANCH_MASTER
+    ) : self {
+        $repository = new self($destinationPath);
+
+        (new Git\CloneRepository($repository->getExecutorHandler()))->__invoke($repositoryUrl, $destinationPath, $branch);
+
+        return $repository;
+    }
+
+    /**
      * @param string $file
      *
      * @return self
