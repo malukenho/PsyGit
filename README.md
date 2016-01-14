@@ -51,7 +51,7 @@ Now you can use the repository manager and start interact with your Repository.
 ```php
 (PsyGit\RepositoryManager::fromDirectory('project-repository'))
     ->trackFile('changelog.txt')
-        ->commit('Changelog updated automaticly 8 A.M.')
+        ->commit('Changelog updated automatically 8 A.M.')
             ->push('origin', 'master', \PsyGit\Command\Push::PUSH_FORCE);
 ```
 
