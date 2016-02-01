@@ -40,7 +40,7 @@ final class NewBranchFromBranch
         $this->commandHandler = $commandHandler;
     }
 
-    public function __invoke(string $directory, string $newBranchName)
+    public function __invoke(string $newBranchName)
     {
         $commandHandler = $this->commandHandler;
         $newBranchName  = escapeshellarg($newBranchName);
